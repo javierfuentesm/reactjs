@@ -44,10 +44,12 @@ class DishDetail extends React.Component{
 
                 const comments=selectedDish.comments.map((comment)=>{
                     return(
+                           
                             <ul className="list-unstyled">
                             <li>{comment.comment}</li>
-                            <li>--{comment.author} {comment.date}</li>                            
-                            </ul>                        
+                            <li>--{comment.author},{new Intl.DateTimeFormat('en-US',{year: 'numeric',month:'short',day:'2-digit'}).format(new Date(Date.parse(comment.date)))}</li>                            
+                            </ul>    
+                                           
                     );
                 });
 
@@ -68,11 +70,11 @@ class DishDetail extends React.Component{
 
              
                 <div className="row">
-                {this.renderDish(this.props.selectedDish)}
+                {this.renderDish(this.props.dish)}
 
               
 
-                {this.renderComments(this.props.selectedDish)}
+                {this.renderComments(this.props.dish)}
               </div>
 
             );
