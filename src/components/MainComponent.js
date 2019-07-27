@@ -1,8 +1,10 @@
 import React from "react";
-import { Navbar, NavbarBrand } from "reactstrap";
 import Menu from "./MenuComponent";
 import { DISHES } from "../shared/dishes";
 import DishDetail from "./DishdetailComponent.js";
+import Header from "./HeaderComponent";
+import Footer from "./FooterComponent";
+
 
 class Main extends React.Component {
   constructor(props) {
@@ -20,11 +22,7 @@ class Main extends React.Component {
   render() {
     return (
       <div>
-        <Navbar dark color="primary">
-          <div className="container">
-            <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
-          </div>
-        </Navbar>
+        <Header />
 
         <div className="container">
           <Menu
@@ -39,6 +37,8 @@ class Main extends React.Component {
             )}
           />
         </div>
+
+        <Footer/>
       </div>
     );
   }
