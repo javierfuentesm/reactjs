@@ -4,41 +4,35 @@ import { DISHES } from "../shared/dishes";
 import DishDetail from "./DishdetailComponent.js";
 import Header from "./HeaderComponent";
 import Footer from "./FooterComponent";
-
+import Home from "./HomeComponent";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      dishes: DISHES,
-      selectedDish: null
+      dishes: DISHES
     };
   }
 
-  onDishSelect(dishId) {
-    this.setState({ selectedDish: dishId });
-  }
-
   render() {
+    const HomePage = () => {
+      return <Home />;
+    };
     return (
       <div>
         <Header />
 
-        <div className="container">
-          <Menu
-            dishes={this.state.dishes}
-            presiona={dishId => this.onDishSelect(dishId)}
+        <Switch>
+          <Route path="/home" component={HomePage} />
+          <Route
+            exact
+            path="/menu"
+            component={() => <Menu dishes={this.state.dishes} />}
           />
-          {/* Se recibe el dishId desde MenuComponent y al momento de recibirlo ejecuta el metodo onDishSelect */}
-
-          <DishDetail
-            dish={this.state.dishes.find(
-              dish => dish.id === this.state.selectedDish
-            )}
-          />
-        </div>
-
-        <Footer/>
+          <Redirect to="/home" />
+        </Switch>
+        <Footer />
       </div>
     );
   }
