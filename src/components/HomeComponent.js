@@ -13,9 +13,9 @@ function RenderCard({ item }) {
     <Card>
       <CardImg src={item.image} alt={item.name} />
       <CardBody>
-        <CardTitle>{item.name}</CardTitle>
+        <CardTitle><h4>{item.name}</h4></CardTitle>
         {item.designation ? (
-          <CardSubtitle>{item.designation}</CardSubtitle>
+          <CardSubtitle><h5>{item.designation}</h5></CardSubtitle>
         ) : null}
         <CardText>{item.description}</CardText>
       </CardBody>
